@@ -63,3 +63,18 @@ bool capacitor::c(double val)
     else
         return false;
 }
+
+capacitor capacitor::operator||(capacitor &outroC)
+{
+     capacitor req; 
+     req.valor=this->valor+outroC.valor;
+     return req;
+}
+
+capacitor capacitor::operator+(capacitor &outroC)
+{
+     capacitor req;
+     req.valor=(this->valor*outroC.valor)/(this->valor+outroC.valor);
+     return req;
+}
+
