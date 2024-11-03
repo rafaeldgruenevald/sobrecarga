@@ -99,9 +99,16 @@ std::string componente::getValMult() {
     if (val.find(".") != std::string::npos) {
         std::string sub = val.substr(val.find("."), std::string::npos);
         val.erase(val.find("."), std::string::npos);
-        if (sub.find("0") != 1) {
-            sub = sub.substr(0, sub.find("0"));
-            val = val + sub; 
+        if (sub.length() > 4) {
+            sub.erase(4, std::string::npos);
+        }
+        // Tira os 0s do final
+        while (sub.back() == '0') {
+            sub.pop_back();
+        }
+
+        if (sub.length() > 1) {
+            val = val + sub;
         }
     }
     return val + mult;
