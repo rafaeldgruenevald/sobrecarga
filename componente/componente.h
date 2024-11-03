@@ -18,10 +18,12 @@ class componente
         double dT(void);
         bool dT(double val);
         double getVal(){return valor;};
+        std::string getValMult();
         std::string getU(){return unidade;};
     protected:
         double valor;
         std::string unidade;
+        std::string valorMultiplicado;
         double tensao;
         double corrente;
         double dt;

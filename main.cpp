@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <iostream>
 
 #include "fonte/fonte.h"
 #include "resistor/resistor.h"
@@ -10,10 +11,10 @@ using namespace std;
 int main()
 {
 
-    resistor r1(2200);
-    capacitor c1(0.00005);
+    capacitor c1(500);
+    capacitor c2(500);
+    capacitor c3;
 
-    fonte Vf(10);
-
-
+    c3 = c1 || c2;
+    std::cout << c3;
 }
