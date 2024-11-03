@@ -72,24 +72,30 @@ bool componente::dT(double val)
 std::string componente::getValMult() {
     std::string mult;
     std::string val;
+    int manter = 0;
     // escolhe o multiplicador adequado
     if (valor >= 1000000) { // Maior que 1M
         val = std::to_string(valor/1000000);
         mult = "M";
+        manter = 3;
     } else if (valor >= 1000) { // Maior que 1k
         val = std::to_string(valor/1000);
         mult = "k";
+        manter = 1;
     } else if (valor < 0.000000001) { // Menor que 1n
         val = std::to_string(valor/0.000000000001);
         std::cout << val << std::endl;
         mult = "p";
+        manter = 3;
     } else if (valor < 0.000001) { // Menor que 1u
         val = std::to_string(valor/0.000000001);
         std::cout << val << std::endl;
         mult = "n";
+        manter = 3;
     } else if (valor < 0.001) { // Menor que 1m
         val = std::to_string(valor/0.000001);
         mult = "u";
+        manter = 3;
     } else { // Nao precisa de multiplicador
         val = std::to_string(valor);
         mult = "";
@@ -99,8 +105,8 @@ std::string componente::getValMult() {
     if (val.find(".") != std::string::npos) {
         std::string sub = val.substr(val.find("."), std::string::npos);
         val.erase(val.find("."), std::string::npos);
-        if (sub.length() > 4) {
-            sub.erase(4, std::string::npos);
+        if (sub.length() > manter) {
+            sub.erase(manter, std::string::npos);
         }
         // Tira os 0s do final
         while (sub.back() == '0') {
